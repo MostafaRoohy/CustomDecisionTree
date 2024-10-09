@@ -9,18 +9,17 @@ class Node:
 
     def __init__(self, feature=None, threshold=None, left=None, right=None, *, value=None):
 
-        self.feature   = feature
-        self.threshold = threshold
-        self.left      = left
-        self.right     = right
-        self.value     = value
+        self.feature   = feature   # numpy array
+        self.threshold = threshold # float
+        self.left      = left      # Node
+        self.right     = right     # Node
+        self.value     = value     # label
     #
 
 
     def is_leaf_node(self):
 
         # A leaf node is a node in a tree data structure that has no children.
-
 
         return (self.value is not None)
     #
@@ -131,7 +130,6 @@ class DecisionTree:
 
         # create children
         left_idxs, right_idxs = self._split(X_column, threshold)
-
         if (len(left_idxs) == 0 or len(right_idxs) == 0):
 
             return (0)
